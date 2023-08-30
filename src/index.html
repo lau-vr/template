@@ -1,0 +1,69 @@
+<html>
+
+<head>
+  <title>Classroom VR Template</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-41295198-4"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,500,0..1,-50..200" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-41295198-4');
+  </script>
+</head>
+
+<body>
+<a-scene shadow="type: pcfsoft" physics="driver: local; gravity: 0; friction: 0; restitution: 0;" renderer="antialias: true" raycaster="objects: [my-slider]">
+  <a-assets>
+    <a-mixin id="touch" class="hands" ></a-mixin>
+  </a-assets>
+
+
+
+  <a-entity class="environment" environment="groundTexture: none; grid: 1x1; gridColor: #222; ground: flat; skyType: color; skyColor: gray; horizonColor: #222; groundColor: black; groundColor2: #fff"></a-entity>
+  <a-assets>
+    <a-asset-item id="plus" src="https://cdn.glitch.global/126b4e72-2ac0-4b74-ad2f-4be152694c26/MINUSS%20.glb?v=1675981115171"></a-asset-item>
+    <a-asset-item id="arrow" src="https://cdn.glitch.global/126b4e72-2ac0-4b74-ad2f-4be152694c26/ARROW%202%20.glb?v=1675978565131"></a-asset-item>
+    <a-asset-item id="minus" src="https://cdn.glitch.global/126b4e72-2ac0-4b74-ad2f-4be152694c26/pluss.glb?v=1675981125859"></a-asset-item>
+    <a-asset-item id="teleportationArea" src="https://raw.githubusercontent.com/Youssef140/Assets/main/Assets/magic_ring_-_green/scene.gltf"></a-asset-item>
+    <!-- <a-asset-item id="class" src="https://cdn.glitch.me/9c8de3fe-0afd-4613-b8a2-ca66167d2a9d/CLASSROOM%203.glb"></a-asset-item> -->
+    <a-asset-item id="exit-sign" src="https://cdn.glitch.global/9c8de3fe-0afd-4613-b8a2-ca66167d2a9d/scene.gltf?v=1677528795614"></a-asset-item>
+    <a-asset-item id="play-button" src="https://cdn.glitch.global/c0e1068e-cc39-47ab-b10f-5ae26c8b5e1f/play.obj?v=1679560427417"></a-asset-item>
+
+  </a-assets>
+
+  <!-- <a-entity gltf-model="#class" position="-11 0.1 -13.45" rotation="0 -90 0" scale="1 1 1"></a-entity> -->
+  <a-gltf-model id="class" src="src/models/classroom.glb" position="-11 0.1 -13.45" rotation="0 -90 0" scale="1 1 1"></a-gltf-model>
+
+  <!-- Walls -->
+  <a-entity geometry="primitive: box;" material="color: white" position="3.5 2 -1.6" scale="10.6 4.5 0.1" static-body ></a-entity>
+  <a-entity geometry="primitive: box;" material="color: white" position="3.2 2 9"  scale="10.6 4.5 0.1" static-body></a-entity> 
+  <a-entity geometry="primitive: box;" material="color: white" position="-2 2 3.6" rotation="0 90 0" scale="10.6 4.5 0.1" static-body></a-entity>
+  <a-entity geometry="primitive: box;" material="color: white" position="8.6 2 3.6" rotation="0 90 0" scale="10.6 4.5 0.1" static-body></a-entity>
+
+  <a-entity gltf-model="#exit-sign" position="8.3 2.22 0.9" rotation="0 180 0" scale="1 1 1"
+  material="color: #FFF;"
+            onmouseenter="this.setAttribute('material', 'color', '#555');"
+            onmouseleave="this.setAttribute('material', 'color', '#FFF');"
+            layer="layer1"></a-entity>
+  
+          
+  <a-entity light="type: ambient; color: #ffffff; intensity: 1;" position="0 3 -1"></a-entity>
+
+  <a-entity id="rig" position="3 0 7" kinematic-body="radius: 0.4" movement-controls="speed: 0.2">
+    <a-entity id="camera" camera></a-entity>
+    <a-entity interaction-hands aabb-collider="objects: .grabbable" id="lhand" hand-controls="hand: left; handModelStyle: highPoly" mixin="touch"></a-entity>
+    <a-entity interaction-hands aabb-collider="objects: .grabbable" id="rhand" hand-controls="hand: right; handModelStyle: highPoly" mixin="touch"></a-entity>
+  </a-entity>
+ 
+
+  <a-sky color="white"></a-sky>
+
+</a-scene>
+
+
+</body>
+
+</html>
